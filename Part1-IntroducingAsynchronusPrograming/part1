@@ -1,0 +1,18 @@
+Synchronous program:
+At each point, the browser waits for the line to finish its work before going on to the next line.
+the caller has to wait for the function to finish its work and return a value before the caller can continue.
+the synchronous function takes a long time, a long-running synchronous function.
+
+
+Asynchronous programming:
+is a technique that enables your program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished. Once that task has finished, your program is presented with the result.
+
+Event handlers:
+you provide a function (the event handler) that will be called, not right away, but whenever the event happens. If "the event" is "the asynchronous operation has completed", then that event could be used to notify the caller about the result of an asynchronous function call.
+
+Callbacks:
+An event handler is a particular type of callback. A callback is just a function that's passed into another function, with the expectation that the callback will be called at the appropriate time. As we just saw, callbacks used to be the main way asynchronous functions were implemented in JavaScript.
+
+
+
+most modern asynchronous APIs don't use callbacks. Instead, the foundation of asynchronous programming in JavaScript is the Promise
