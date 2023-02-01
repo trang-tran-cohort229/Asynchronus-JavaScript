@@ -1,0 +1,53 @@
+Promises are the foundation of asynchronous programming in modern JavaScript.
+A promise is an object returned by an asynchronous function, which represents the current state of the operation.
+At the time the promise is returned to the caller, the operation often isn't finished, but the promise object provides methods to handle the eventual success or failure of the operation.
+
+
+Using the fetch() API:
+With the fetch() API, once you get a Response object, you need to call another function to get the response data. 
+
+
+Chaining promises:
+In this case, we want to get the response data as JSON, so we would call the json() method of the Response object. It turns out that json() is also asynchronous. So this is a case where we have to call two successive asynchronous functions.
+
+
+Catching errors:
+Handling can get very difficult with nested callbacks, making us handle errors at every nesting level.
+
+To support error handling, Promise objects provide a catch() method. This is a lot like then(): you call it and pass in a handler function. However, while the handler passed to then() is called when the asynchronous operation succeeds, the handler passed to catch() is called when the asynchronous operation fails.
+
+If you add catch() to the end of a promise chain, then it will be called when any of the asynchronous function calls fails. So you can implement an operation as several consecutive asynchronous function calls, and have a single place to handle all errors.
+
+
+
+Promise terminology:
+a promise can be in one of three states:
+
+pending: the promise has been created, and the asynchronous function it's associated with has not succeeded or failed yet. This is the state your promise is in when it's returned from a call to fetch(), and the request is still being made.
+
+fulfilled: the asynchronous function has succeeded. When a promise is fulfilled, its then() handler is called.
+
+rejected: the asynchronous function has failed. When a promise is rejected, its catch() handler is called.
+Note that what "succeeded" or "failed" means here is up to the API in question
+
+
+
+Combining multiple promises:
+Sometimes, you need all the promises to be fulfilled, but they don't depend on each other. In a case like that, it's much more efficient to start them all off together, then be notified when they have all fulfilled. The Promise.all() method is what you need here. It takes an array of promises and returns a single promise.
+
+The promise returned by Promise.all() is:
+
+fulfilled when and if all the promises in the array are fulfilled. In this case, the then() handler is called with an array of all the responses, in the same order that the promises were passed into all().
+rejected when and if any of the promises in the array are rejected. In this case, the catch() handler is called with the error thrown by the promise that rejected.
+
+
+
+async and await:
+Adding async at the start of a function makes it an async function:
+async function myFunction() {
+  // This is an async function
+}
+
+Inside an async function, you can use the await keyword before a call to a function that returns a promise. This makes the code wait at that point until the promise is settled, at which point the fulfilled value of the promise is treated as a return value, or the rejected value is thrown.
+
+This enables you to write code that uses asynchronous functions but looks like synchronous code. 
