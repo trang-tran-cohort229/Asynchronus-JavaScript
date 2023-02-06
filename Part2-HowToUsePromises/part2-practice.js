@@ -18,6 +18,7 @@
 
 
 
+
 // // Callbacks
 // const firstPlace = true;
 // const secondPlace = false;
@@ -48,20 +49,60 @@
 
 
 
-// Combining multiple promises
-const teamA = new Promise((approve, disapprove) => {
-    approve('Team A won Team B')
-})
-const teamC = new Promise((approve, disapprove) => {
-    approve('Team C won Team D')
-})
-const teamE = new Promise((approve, disapprove) => {
-    approve('Team E won Team F')
-})
-Promise.all([
-    teamA,
-    teamC,
-    teamE
-]).then((message) => {
-    console.log(message)
-})
+// // Combining multiple promises
+// const teamA = new Promise((approve, disapprove) => {
+//     approve('Team A won Team B')
+// })
+// const teamC = new Promise((approve, disapprove) => {
+//     approve('Team C won Team D')
+// })
+// const teamE = new Promise((approve, disapprove) => {
+//     approve('Team E won Team F')
+// })
+// Promise.all([
+//     teamA,
+//     teamC,
+//     teamE
+// ]).then((message) => {
+//     console.log(message)
+// })
+
+
+
+
+// // Promise
+// const promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve('Tyler got a high score.')
+//     }, 1000)
+// })
+
+// const promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         reject('Tyler got a low score.')
+//     }, 1000)
+// })
+
+// const onFulfillment = (result) => {
+//     console.log(result)
+//     console.log('Tyler will be going to the university.')
+// }
+
+// const onRejection = (error) => {
+//     console.log(error)
+//     console.log('Tyler will be going to the college.')
+// }
+
+// promise.then(onFulfillment)
+// promise.catch(onRejection)
+
+
+// Promise.all()
+const promise1 = Promise.resolve(beef);
+const promise2 = chicken;
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 1000, 'pork');
+});
+Promise.all([promise1, promise2, promise3]).then((values) => {
+    console.log(values);
+});

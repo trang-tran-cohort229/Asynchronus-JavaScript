@@ -1,0 +1,25 @@
+How to implement a promise-based API
+
+When you implement a promise-based API, you'll be wrapping an asynchronous operation, which might use events, or plain callbacks, or a message-passing model. You'll arrange for a Promise object to handle the success or failure of that operation properly.
+
+
+
+1. Implementing an alarm() API
+In this example we'll implement a promise-based alarm API, called alarm(). It will take as arguments the name of the person to wake up and a delay in milliseconds to wait before waking the person up. After the delay, the function will send a "Wake up!" message, including the name of the person we need to wake up.
+
++ Wrapping setTimeout()
+We'll use the setTimeout() API to implement our alarm() function. The setTimeout() API takes as arguments a callback function and a delay, given in milliseconds. When setTimeout() is called, it starts a timer set to the given delay, and when the time expires, it calls the given function.
+
++ The Promise() constructor
+Our alarm() function will return a Promise that is fulfilled when the timer expires.
+The key component here is the Promise() constructor. The Promise() constructor takes a single function as an argument. We'll call this function the executor. When you create a new promise you supply the implementation of the executor.
+
+
+2. Using the alarm() API
+We can call alarm(), and on the returned promise call then() and catch() to set handlers for promise fulfillment and rejection.
+
+3. Using async and await with the alarm() API
+Since alarm() returns a Promise, we can do everything with it that we could do with any other promise: promise chaining, Promise.all(), and async / await
+
+
+
