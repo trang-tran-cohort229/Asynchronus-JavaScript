@@ -1,0 +1,6 @@
+The animate() method returns an Animation object. This object has a finished property, which is a Promise that is fulfilled when the animation has finished playing. So we can use this promise to know when to start the next animation.
+
+First, implement something that works, but has the promise version of the "callback hell" problem we saw in our discussion of using callbacks.
+Next, implement it as a promise chain. Note that there are a few different ways you can write this, because of the different forms you can use for an arrow function. Try some different forms. Which is the most concise? Which do you find the most readable?
+Finally, implement it using async and await.
+Remember that element.animate() does not return a Promise: it returns an Animation object with a finished property that is a Promise.
